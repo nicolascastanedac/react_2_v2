@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import CartWidget from './CartWidget';
-import Catalogo from "./Catalogo"; // Importa el componente Catalogo
-import 'bootstrap/dist/css/bootstrap.min.css';
-const Navbar = () => {
+
+const Navbar = ({ itemCount }) => {
   const [categorias, setCategorias] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -37,11 +36,14 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
-        <CartWidget />
+        <Link to="/carrito">
+          <CartWidget itemCount={itemCount} />
+        </Link>
       </div>
     </nav>
   );
 };
 
 export default Navbar;
+
 

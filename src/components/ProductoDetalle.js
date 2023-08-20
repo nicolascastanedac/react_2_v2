@@ -2,8 +2,8 @@ import React from "react";
 import catalogoData from "../catalogoData";
 import { useParams } from "react-router-dom";
 
-const ProductoDetalle = () => {
-  const { id } = useParams(); // Utiliza useParams() para obtener el parámetro de la URL
+const ProductoDetalle = ({ addToCart }) => {
+  const { id } = useParams();
   const producto = catalogoData.find((item) => item.id === Number(id));
 
   if (!producto) {
@@ -16,6 +16,7 @@ const ProductoDetalle = () => {
       <h3>{producto.nombre}</h3>
       <p>Categoría: {producto.categoria}</p>
       <p>Precio: {producto.precio}</p>
+      <button onClick={() => addToCart(producto)}>Agregar al carrito</button>
     </div>
   );
 };

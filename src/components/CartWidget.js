@@ -1,7 +1,7 @@
-import React from 'react';
-import cartIcon from './shopping-cart.png'; // Ruta de la imagen del carrito de compra
+import React from "react";
+import cartIcon from './shopping-cart.png';
 
-const CartWidget = () => {
+const CartWidget = ({ itemCount }) => {
   const cartWidgetStyle = {
     display: 'flex',
     alignItems: 'center',
@@ -22,7 +22,7 @@ const CartWidget = () => {
   return (
     <div style={cartWidgetStyle}>
       <img src={cartIcon} alt="Cart Icon" style={iconStyle} />
-      <span style={itemCountStyle}>4</span>
+      <span style={itemCountStyle}>{itemCount}</span>
     </div>
   );
 };

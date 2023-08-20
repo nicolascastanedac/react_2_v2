@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from "react";
 import CatalogoItem from "./CatalogoItem";
 import catalogoData from "../catalogoData";
-import { useParams } from "react-router-dom"; // Importa 'useParams'
+import { useParams } from "react-router-dom";
 
-const CatalogoPorCategoria = () => {
-  const { categoria } = useParams(); // Usa 'useParams()' para acceder a los parámetros de la URL
+const CatalogoPorCategoria = ({ addToCart }) => {
+  const { categoria } = useParams();
   const [productosFiltrados, setProductosFiltrados] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProductosFiltrados = () => {
-      // En una aplicación real, aquí iría la llamada a una API
-    
-      // Por ahora, utilizaremos un filtrado en el lado del cliente con datos locales.
       const productosFiltradosLocal = catalogoData.filter(
         (item) => item.categoria === categoria
       );
@@ -36,6 +33,7 @@ const CatalogoPorCategoria = () => {
           nombre={item.nombre}
           categoria={item.categoria}
           precio={item.precio}
+          addToCart={() => addToCart(item)}
         />
       ))}
     </div>
@@ -43,4 +41,3 @@ const CatalogoPorCategoria = () => {
 };
 
 export default CatalogoPorCategoria;
-
